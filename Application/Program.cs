@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using Application.Commands;
+using Cherry.Application.Commands;
 using Semver;
 using Spectre.Console;
 using Spectre.Console.Cli;

@@ -1,6 +1,6 @@
 ﻿using Spectre.Console.Cli;
 
-namespace Application.Commands; 
+namespace Cherry.Application.Commands; 
 
 public class LoggingSettings : CommandSettings {
     [CommandOption(template: "-v|--verbose")]

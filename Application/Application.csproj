@@ -5,6 +5,8 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <AssemblyName>cherry</AssemblyName>
+        <RootNamespace>Cherry.Application</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,6 +18,10 @@
       <PackageReference Include="Spectre.Console" Version="0.47.0" />
       <PackageReference Include="Spectre.Console.Cli" Version="0.47.0" />
       <PackageReference Include="YamlDotNet" Version="13.7.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Analyzer\Analyzer.csproj" />
     </ItemGroup>
 
 </Project>

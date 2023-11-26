@@ -1,6 +1,6 @@
 ﻿using Spectre.Console.Cli;
 
-namespace Application.Commands; 
+namespace Cherry.Application.Commands; 
 
 internal sealed class ConfigureCommand : Command<ConfigureCommand.Settings> {
     public sealed class Settings : LoggingSettings {

@@ -1,4 +1,4 @@
-﻿namespace Application.Utilities; 
+﻿namespace Cherry.Application.Utilities; 
 
 public static class PathHelper {
     public static bool Absolute { get; set; }

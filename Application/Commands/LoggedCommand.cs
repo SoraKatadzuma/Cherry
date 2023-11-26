@@ -1,9 +1,10 @@
-﻿using Serilog;
+﻿using Cherry.Application.Utilities;
+using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.Spectre;
 using Spectre.Console.Cli;
 
-namespace Application.Commands; 
+namespace Cherry.Application.Commands; 
 
 internal abstract class LoggedCommand<TSettings> : Command<TSettings>
     where TSettings : LoggingSettings {
@@ -21,6 +22,7 @@ internal abstract class LoggedCommand<TSettings> : Command<TSettings>
         
         var config = new LoggerConfiguration();
         config.MinimumLevel.Verbose();
+        config.Enrich.With<SourceContextEnricher>();
         config.WriteTo.Spectre(outputTemplate: _TEMPLATE, restrictedToMinimumLevel: logLevel);
         if (loggingPath != null) {
             // Adjust logging path to write to a specific file.
@@ -30,5 +32,6 @@ internal abstract class LoggedCommand<TSettings> : Command<TSettings>
         }
 
         Log.Logger = config.CreateLogger().ForContext<T>();
+        Log.Logger.Verbose("Logging enabled.");
     }
 }
