@@ -6,6 +6,14 @@ namespace Cherry.Application.Configuration;
 
 public class BuildTarget {
     [Required]
+    [YamlMember(typeof(string), Alias="name")]
+    public string Name { get; set; } = "Target";
+
+    [Required]
+    [YamlMember(typeof(string), Alias="type")]
+    public TargetType Type { get; set; } = TargetType.Executable;
+    
+    [Required]
     [YamlMember(typeof(string[]), Alias="sources")]
     public string[] Sources { get; set; } = Array.Empty<string>();
 
@@ -27,6 +35,8 @@ public class BuildTarget {
 
     public static implicit operator BuildTarget(Target compilerTarget) {
         return new BuildTarget {
+            Name        = compilerTarget.Name,
+            Type        = (TargetType)compilerTarget.Type,
             Sources     = compilerTarget.Sources.ToArray(),
             Options     = compilerTarget.Options?.ToArray(),
             Defines     = compilerTarget.Defines?.ToArray(),
@@ -38,6 +48,8 @@ public class BuildTarget {
     
     public static implicit operator Target(BuildTarget buildTarget) {
         return new Target(
+            Name:        buildTarget.Name,
+            Type:        (Target.OutputType)buildTarget.Type,
             Sources:     buildTarget.Sources,
             Options:     buildTarget.Options,
             Defines:     buildTarget.Defines,

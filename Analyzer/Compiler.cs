@@ -1,7 +1,12 @@
 namespace Cherry.Analyzer; 
 
 public static class Compiler {
-    public static void CompileTarget(Target target) {
+    public static void CompileTarget(Target target, string outputPath) {
+        
+        
+        if (!target.TrimForRecompilation(outputPath))
+            return;
+        
         // Check if target exists
         // Check if any of the files have been updated after last target build.
         // Load symbols from files that do not need to be recompiled?

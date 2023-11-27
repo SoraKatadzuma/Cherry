@@ -26,7 +26,7 @@ internal abstract class LoggedCommand<TSettings> : Command<TSettings>
         config.WriteTo.Spectre(outputTemplate: _TEMPLATE, restrictedToMinimumLevel: logLevel);
         if (loggingPath != null) {
             // Adjust logging path to write to a specific file.
-            var datetime = DateTime.Now.ToString("yyyyMddHHmmss");
+            var datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
             loggingPath = Path.Join(loggingPath, $"{datetime}.log");
             config.WriteTo.File(outputTemplate: _TEMPLATE, restrictedToMinimumLevel: logLevel, path: loggingPath);
         }
